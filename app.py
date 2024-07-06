@@ -4,7 +4,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    weddind_date = '11 августа 2024 год'
+    week_day = 'Воскресенье'
+    return render_template('index.html', date=weddind_date, week_day=week_day)
 
 if __name__ == '__main__':
     app.run()
