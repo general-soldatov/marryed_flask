@@ -119,7 +119,8 @@
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 					<h2>Привет!</h2>
 					<h3>{{ date }}, {{ location }}</h3>
-					<p>Мы приглашаем тебя на нашу свадьбу.</p>
+					<p>Один день в этом году будет для нас особенным и мы хотим провести его в кругу близких и друзей.
+						С большим удовольствием приглашаем вас на знаменательный праздник - нашу свадьбу!</p>
 				</div>
 			</div>
 			<div class="couple-wrap animate-box">
@@ -146,58 +147,6 @@
 		</div>
 	</div>
 
-	<div id="fh5co-event" class="fh5co-bg" style="background-image:url(/static/images/img_bg_3.jpg);">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<span>Вас ждут</span>
-					<h2>На нашей свадьбе</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="display-t">
-					<div class="display-tc">
-						<div class="col-md-10 col-md-offset-1">
-							<div class="col-md-6 col-sm-6 text-center">
-								<div class="event-wrap animate-box">
-									<h3>Выездная регистрация</h3>
-									<div class="event-col">
-										<i class="icon-clock"></i>
-										<span>17:00</span>
-										<span>18:00</span>
-									</div>
-									<div class="event-col">
-										<i class="icon-calendar"></i>
-										<span>{{ date }}</span>
-										<span>{{ week_day }}</span>
-									</div>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-6 text-center">
-								<div class="event-wrap animate-box">
-									<h3>Свадебный ужин</h3>
-									<div class="event-col">
-										<i class="icon-clock"></i>
-										<span>18:00</span>
-										<span>00:00</span>
-									</div>
-									<div class="event-col">
-										<i class="icon-calendar"></i>
-										<span>{{ date }}</span>
-										<span>{{ week_day }}</span>
-									</div>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<div id="fh5co-couple-story">
 		<div class="container">
 			<div class="row">
@@ -210,42 +159,20 @@
 			<div class="row">
 				<div class="col-md-12 col-md-offset-0">
 					<ul class="timeline animate-box">
-						<li class="animate-box">
-							<div class="timeline-badge" style="background-image:url(/static/images/welcome.jpg);"></div>
+						{% for item in events %}
+						<li class="{{ '' if loop.index %2 == 0 else 'timeline-inverted '}}animate-box">
+							<div class="timeline-badge" style="background-image:url({{ url_for('static', filename=item[1]) }});"></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
-									<h3 class="timeline-title">Welcome</h3>
-									<i class="icon-clock">  16:00 - 17:00</i>
+									<h3 class="timeline-title">{{ item[0] }}</h3>
+									<i class="icon-clock">  {{ item[2] }}</i>
 								</div>
 								<div class="timeline-body">
-									<p>Здесь Вы сможете познакомиться с гостями.</p>
+									<p>{{ item[3] }}</p>
 								</div>
 							</div>
 						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge" style="background-image:url(/static/images/wedding.jpg);"></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Выездная регистрация</h3>
-									<i class="icon-clock">  17:00 - 18:00</i>
-								</div>
-								<div class="timeline-body">
-									<p>Здесь начинается семья.</p>
-								</div>
-							</div>
-						</li>
-						<li class="animate-box">
-							<div class="timeline-badge" style="background-image:url(/static/images/dinner.jpg);"></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Свадебный ужин</h3>
-									<i class="icon-clock">  18:00 - 22:00</i>
-								</div>
-								<div class="timeline-body">
-									<p>Такое событие, что не отметить непростительно!</p>
-								</div>
-							</div>
-						</li>
+						{% endfor %}
 			    	</ul>
 				</div>
 			</div>
@@ -360,46 +287,92 @@
 		</div>
 	</div>
 
+	<div id="fh5co-event" class="fh5co-bg" style="background-image:url(/static/images/img_bg_3.jpg);">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+					<span>Вас ждут</span>
+					<h2>На нашей свадьбе</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="display-t">
+					<div class="display-tc">
+						<div class="col-md-10 col-md-offset-1">
+							<div class="col-md-6 col-sm-6 text-center">
+								<div class="event-wrap animate-box">
+									<h3>Цветочная подписка</h3>
+									<div class="event-col">
+										<i class="icon-clock"></i>
+										<span>17:00</span>
+										<span>18:00</span>
+									</div>
+									<div class="event-col">
+										<i class="icon-calendar"></i>
+										<span>{{ date }}</span>
+										<span>{{ week_day }}</span>
+									</div>
+									<p>Сразу после свадьбы мы улетаем в свадебное путешествие, поэтому мы не успеем насладиться красотой подаренных цветов.
+										Чтобы праздничное настроение длилось дольше, мы предлагаем оформить цветочную подписку в честь свадьбы!</p>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 text-center">
+								<div class="event-wrap animate-box">
+									<h3>Свадебный ужин</h3>
+									<div class="event-col">
+										<i class="icon-clock"></i>
+										<span>18:00</span>
+										<span>00:00</span>
+									</div>
+									<div class="event-col">
+										<i class="icon-calendar"></i>
+										<span>{{ date }}</span>
+										<span>{{ week_day }}</span>
+									</div>
+									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div id="fh5co-services" class="fh5co-section-gray">
 		<div class="container">
 
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>We Offer Services</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+					<h2>Торжество состоится в Усадьбе 12.24</h2>
+
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-md-6">
 					<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
-						<span class="icon">
-							<i class="icon-calendar"></i>
-						</span>
-						<div class="feature-copy">
-							<h3>Мероприятие организовано</h3>
-							<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-						</div>
-					</div>
+						<ul>
+							<li><p>
+								Мы будем рады разделить с Вами радость неповторимого для нас дня – дня нашей свадьбы!
+								Приглашаем присоединиться к нашему празднику и украсить его своим присутствием!
+							</p>
+							<li>
+							<p></p><p>
+								Пожалуйста, подтвердите ваше присутствие на нашем празднике до 12 июля 2024 года
+								лично или телефонным звонком/любым удобным для вас способом.
+								В день свадьбы мы будем немного заняты, поэтому, в случае возникновения вопросов, вы всегда можете
+								обратиться за помощью к нашему свадебному координатору.
+							</p></li>
+							<p></p></li>
+							<li><p>
+								Усадьба располагается в селе Новая Усмань на берегу реки Усманка в 12-ти км от города
+								(поворот с улицы Ростовской направо около АЗС "Газпромнефть", затем движение по указателю направо по грунтовой дороге).
+								Точка на карте поможет вам добраться. <br>Будем рады вас видеть!
+								</p></li>
+						</ul>
 
-					<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
-						<span class="icon">
-							<i class="icon-image"></i>
-						</span>
-						<div class="feature-copy">
-							<h3>Фотограф</h3>
-							<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-						</div>
-					</div>
-
-					<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
-						<span class="icon">
-							<i class="icon-video"></i>
-						</span>
-						<div class="feature-copy">
-							<h3>Видеограф</h3>
-							<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-						</div>
 					</div>
 
 				</div>
@@ -455,7 +428,7 @@
 			<div class="row copyright">
 				<div class="col-md-12 text-center">
 					<p>
-						<small class="block">&copy; 2024 general_soldatov. All Rights Reserved.</small>
+						<small class="block">&copy; 2024 Developed by general_soldatov. All Rights Reserved.</small>
 						<small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a></small>
 					</p>
 					<p>
@@ -471,6 +444,42 @@
 
 		</div>
 	</footer>
+	</div>
+
+	<div id="fh5co-started" class="fh5co-bg" style="background-image:url(/static/images/img_bg_4.jpg);">
+		<div class="overlay"></div>
+		<div class="container">
+
+			<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
+				<span class="icon">
+					<i class="fas fa-microphone-alt"></i>
+				</span>
+				<div class="feature-copy">
+					<h3>Мероприятие организовано</h3>
+					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+				</div>
+			</div>
+
+			<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
+				<span class="icon">
+					<i class="icon-image"></i>
+				</span>
+				<div class="feature-copy">
+					<h3>Фотограф</h3>
+					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+				</div>
+			</div>
+
+			<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
+				<span class="icon">
+					<i class="icon-video"></i>
+				</span>
+				<div class="feature-copy">
+					<h3>Видеограф</h3>
+					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div class="gototop js-top">
