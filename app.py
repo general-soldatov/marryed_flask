@@ -1,5 +1,7 @@
 from flask import Flask, flash
 from flask import render_template, request, redirect, url_for
+from project.events import NewlyWeds, Wedding
+from project.users import Users
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -8,16 +10,19 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 @app.route('/', methods=['get', 'post'])
 def index():
     client = ''
+
     weddind_date = '11 августа 2024 год'
     week_day = 'Воскресенье'
     location = 'с. Новая Усмань, Усадьба 12.24'
+
     go_to = 10
     waiting = 50
+
     together_day = 100
     time_kiss = 100
 
     up_case = [
-        ['Home', 'index.html'],
+        ['Home', '/index'],
         ['Telegram-канал', '#'],
         ['Цветочная подписка', '#']
     ]
@@ -50,12 +55,13 @@ def index():
         return redirect(url_for('index'))
 
     return render_template('index.html',
-                           client=client,
-                           date=weddind_date, week_day=week_day,
-                           go_to = go_to, waiting=waiting,
-                           together_day=together_day, time_kiss=time_kiss,
-                           family=family, up_case=up_case, cal=calendar,
-                           location=location, newlyweds=newlyweds, events=events)
+                           client=client, user=Users(),
+                           newl=NewlyWeds(), wed=Wedding())
+                        #    date=weddind_date, week_day=week_day,
+                        #    go_to = go_to, waiting=waiting,
+                        #    together_day=together_day, time_kiss=time_kiss,
+                        #    family=family, up_case=up_case, cal=calendar,
+                        #    location=location, newlyweds=newlyweds, events=events)
 
 @app.route('/<user>', methods=['get', 'post'])
 def users_page(user):
@@ -99,15 +105,11 @@ def users_page(user):
         client_mail = request.form.get("email")
         print(client_mail, client_name)
         flash('Спасибо, будем ждать Вас на мероприятии!')
-        return redirect(url_for('index'))
+        return redirect(f'/{client}')
 
     return render_template('index.html',
-                           client=client,
-                           date=weddind_date, week_day=week_day,
-                           go_to = go_to, waiting=waiting,
-                           together_day=together_day, time_kiss=time_kiss,
-                           family=family, up_case=up_case, cal=calendar,
-                           location=location, newlyweds=newlyweds, events=events)
+                           client=client, user=Users(),
+                           newl=NewlyWeds(), wed=Wedding())
 
 if __name__ == '__main__':
     app.run()

@@ -7,7 +7,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 					<h2>Привет!</h2>
-					<h3>{{ date }}, {{ location }}</h3>
+					<h3>{{ wed.date }}, {{ wed.location }}</h3>
 					<p>Один день в этом году будет для нас особенным и мы хотим провести его в кругу близких и друзей.
 						С большим удовольствием приглашаем вас на знаменательный праздник - нашу свадьбу!</p>
 				</div>
@@ -15,21 +15,21 @@
 			<div class="couple-wrap animate-box">
 				<div class="couple-half">
 					<div class="groom">
-						<img src="{{ url_for('static', filename=newlyweds[0][1]) }}" alt="groom" class="img-responsive">
+						<img src="{{ url_for('static', filename=newl.about[0][1]) }}" alt="groom" class="img-responsive">
 					</div>
 					<div class="desc-groom">
-						<h3>{{ newlyweds[0][0] }}</h3>
-						<p>{{ newlyweds[0][2] }}</p>
+						<h3>{{ newl.about[0][0] }}</h3>
+						<p>{{ newl.about[0][2] }}</p>
 					</div>
 				</div>
 				<p class="heart text-center"><i class="icon-heart2"></i></p>
 				<div class="couple-half">
 					<div class="bride">
-						<img src="{{ url_for('static', filename=newlyweds[1][1]) }}" alt="groom" class="img-responsive">
+						<img src="{{ url_for('static', filename=newl.about[1][1]) }}" alt="groom" class="img-responsive">
 					</div>
 					<div class="desc-bride">
-						<h3>{{ newlyweds[1][0] }}</h3>
-						<p>{{ newlyweds[1][2] }}</p>
+						<h3>{{ newl.about[1][0] }}</h3>
+						<p>{{ newl.about[1][2] }}</p>
 					</div>
 				</div>
 			</div>
@@ -48,7 +48,7 @@
 			<div class="row">
 				<div class="col-md-12 col-md-offset-0">
 					<ul class="timeline animate-box">
-						{% for item in events %}
+						{% for item in wed.events %}
 						<li class="{{ '' if loop.index %2 == 0 else 'timeline-inverted '}}animate-box">
 							<div class="timeline-badge" style="background-image:url({{ url_for('static', filename=item[1]) }});"></div>
 							<div class="timeline-panel">
@@ -137,7 +137,7 @@
 									<i class="icon-users"></i>
 								</span>
 
-								<span class="counter js-counter" data-from="0" data-to="{{ go_to }}" data-speed="5000" data-refresh-interval="50">1</span>
+								<span class="counter js-counter" data-from="0" data-to="{{ user.go_to }}" data-speed="5000" data-refresh-interval="50">1</span>
 								<span class="counter-label">Придёт гостей</span>
 
 							</div>
@@ -148,7 +148,7 @@
 									<i class="icon-user"></i>
 								</span>
 
-								<span class="counter js-counter" data-from="0" data-to="{{ waiting }}" data-speed="5000" data-refresh-interval="50">1</span>
+								<span class="counter js-counter" data-from="0" data-to="{{ user.waiting }}" data-speed="5000" data-refresh-interval="50">1</span>
 								<span class="counter-label">Ожидаем гостей</span>
 							</div>
 						</div>
@@ -157,7 +157,7 @@
 								<span class="icon">
 									<i class="icon-calendar"></i>
 								</span>
-								<span class="counter js-counter" data-from="0" data-to="{{ together_day }}" data-speed="5000" data-refresh-interval="50">1</span>
+								<span class="counter js-counter" data-from="0" data-to="{{ newl.together_day }}" data-speed="5000" data-refresh-interval="50">1</span>
 								<span class="counter-label">Дней вместе</span>
 							</div>
 						</div>
@@ -167,7 +167,7 @@
 									<i class="icon-clock"></i>
 								</span>
 
-								<span class="counter js-counter" data-from="0" data-to="{{ time_kiss }}" data-speed="5000" data-refresh-interval="50">1</span>
+								<span class="counter js-counter" data-from="0" data-to="{{ newl.time_kiss }}" data-speed="5000" data-refresh-interval="50">1</span>
 								<span class="counter-label">Часов поцелуев</span>
 
 							</div>
@@ -288,7 +288,7 @@
 					<div class="col-md-12 animate-box">
 						<div class="wrap-testimony">
 							<div class="owl-carousel-fullwidth">
-								{% for item in family%}
+								{% for item in wed.family%}
 								<div class="item">
 									<div class="testimony-slide active text-center">
 										<figure>
