@@ -313,6 +313,7 @@
 	<div id="fh5co-started" class="fh5co-bg" style="background-image:url(/static/images/img_bg_4.jpg);">
 		<div class="overlay"></div>
 		<div class="container">
+			{% if not to_go %}
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 					<h2>Вы придёте?</h2>
@@ -340,6 +341,14 @@
 					</form>
 				</div>
 			</div>
+			{% else %}
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Ура!</h2>
+					<p>Мы будем рады видеть Вас на нашей свадьбе. </p>
+				</div>
+			</div>
+			{% endif %}
 		</div>
 	</div>
 

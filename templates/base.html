@@ -115,8 +115,10 @@
 							<h1>Юрий & Эльвира</h1>
 							<h2>Мы поженимся через</h2>
 							<div class="simply-countdown simply-countdown-one"></div>
+							{% if client != '' %}
 							{% set cal = wed.calendar %}
 							<p><a href="https://calendar.google.com/calendar/r/eventedit?text={{ cal[0] }}&dates={{ cal[1] }}Z/{{ cal[2] }}Z&details=For+details,+link+here:+{{ cal[3] }}&location={{ cal[4] }}" class="btn btn-default btn-sm">Сохранить дату</a></p>
+							{% endif %}
 						</div>
 					</div>
 				</div>
