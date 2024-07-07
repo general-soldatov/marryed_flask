@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if client != '' %}
+{% if client %}
 	<div id="fh5co-couple">
 		<div class="container">
 			<div class="row">
@@ -200,15 +200,15 @@
 							<p></p><p>
 								Пожалуйста, подтвердите ваше присутствие на нашем празднике до 12 июля 2024 года
 								лично или телефонным звонком/любым удобным для вас способом.
-								В день свадьбы мы будем немного заняты, поэтому, в случае возникновения вопросов, вы всегда можете
-								обратиться за помощью к нашему свадебному координатору.
 							</p></li>
 							<p></p></li>
 							<li><p>
 								Усадьба располагается в селе Новая Усмань на берегу реки Усманка в 12-ти км от города
 								(поворот с улицы Ростовской направо около АЗС "Газпромнефть", затем движение по указателю направо по грунтовой дороге).
-								Точка на карте поможет вам добраться. <br>Будем рады вас видеть!
+								Точка на карте поможет вам добраться.
 								</p></li>
+							<li><p>В день свадьбы мы будем немного заняты, поэтому, в случае возникновения вопросов, вы всегда можете
+								обратиться за помощью к нашему свадебному координатору.<br>Будем рады вас видеть!</p></li>
 						</ul>
 
 					</div>
@@ -230,12 +230,6 @@
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<span>Вас ждут</span>
-					<h2>На нашей свадьбе</h2>
-				</div>
-			</div>
-			<div class="row">
 				<div class="display-t">
 					<div class="display-tc">
 						<div class="col-md-10 col-md-offset-1">
@@ -248,9 +242,9 @@
 									<div class="event-col">
 										<p>Приобрести подписку<br>Flowers studio</p>
 										<p></p>
-										<p><a href="#" class="btn btn-default btn-sm">Перейти на сайт</a></p>
+										<p><a href="{{ wed.up_case[2][1] }}" class="btn btn-default btn-sm">Сайт</a></p>
 									</div>
-									<p>Сразу после свадьбы мы улетаем в свадебное путешествие, поэтому мы не успеем насладиться красотой подаренных цветов.
+									<p>Сразу после свадьбы мы улетаем в свадебное путешествие, поэтому не успеем насладиться красотой подаренных цветов.
 										Чтобы праздничное настроение длилось дольше, мы предлагаем оформить цветочную подписку в честь свадьбы!</p>
 								</div>
 							</div>
@@ -263,9 +257,10 @@
 									<div class="event-col">
 										<p>Подписаться на наш<br>Telegram-канал</p>
 										<p></p>
-										<p><a href="#" class="btn btn-default btn-sm">Перейти в Telegram</a></p>
+										<p><a href="{{ wed.up_case[1][1] }}" class="btn btn-default btn-sm">Telegram</a></p>
 									</div>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+									<p>Мы создали группу в Telegram, где будет основная информация по торжеству. А также можно будет добавлять фото и видео со свадьбы.
+									   Давайте поделимся друг с другом счастливыми моментами этого важного дня!</p>
 								</div>
 							</div>
 						</div>
@@ -325,8 +320,8 @@
 					<form action="" method="post">
 						<div class="col-md-4 col-sm-4">
 							<div class="forms-group">
-								<label for="name" class="sr-only">Имя Фамилия</label>
-								<input type="text" class="forms-control" name="name" placeholder="Name">
+								<label for="name" class="sr-only">Телефон</label>
+								<input type="text" class="forms-control" name="phone" placeholder="Телефон">
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4">
