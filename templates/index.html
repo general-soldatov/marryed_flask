@@ -74,6 +74,16 @@
 
 	</head>
 	<body>
+		{# подключение системы всплывающих сообщений #}
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul class=flashes>
+			{% for message in messages %}
+			<li>{{ message }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		{% endwith %}
 
 	<div class="fh5co-loader"></div>
 
@@ -82,7 +92,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-2">
-					<div id="fh5co-logo"><a href="index.html">Cвадьба<strong></strong></a></div>
+					<div id="fh5co-logo"><a href="index">Cвадьба<strong></strong></a></div>
 				</div>
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
@@ -180,6 +190,42 @@
 	</div>
 
 	<div id="fh5co-gallery" class="fh5co-section-gray">
+		<div class="overlay"></div>
+		<div class="container">
+
+			<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
+				<span class="icon">
+					<i class="fas fa-microphone-alt"></i>
+				</span>
+				<div class="feature-copy">
+					<h3>Мероприятие организовано</h3>
+					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+				</div>
+			</div>
+
+			<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
+				<span class="icon">
+					<i class="icon-image"></i>
+				</span>
+				<div class="feature-copy">
+					<h3>Фотограф</h3>
+					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+				</div>
+			</div>
+
+			<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
+				<span class="icon">
+					<i class="icon-video"></i>
+				</span>
+				<div class="feature-copy">
+					<h3>Видеограф</h3>
+					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-couple-story">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
@@ -253,93 +299,6 @@
 		</div>
 	</div>
 
-	<div id="fh5co-testimonial">
-		<div class="container">
-			<div class="row">
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<span>Best Wishes</span>
-						<h2>Пожелания от близких</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 animate-box">
-						<div class="wrap-testimony">
-							<div class="owl-carousel-fullwidth">
-								{% for item in family%}
-								<div class="item">
-									<div class="testimony-slide active text-center">
-										<figure>
-											<img src="{{ url_for('static', filename=item[4]) }}" alt="user">
-										</figure>
-										<span>{{ item[0] }}, {{ item[1] }} <a href="{{ item[3] }}" class="twitter">{{ item[2] }}</a></span>
-										<blockquote>
-											<p>"{{ item[5] }}"</p>
-										</blockquote>
-									</div>
-								</div>
-								{% endfor %}
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="fh5co-event" class="fh5co-bg" style="background-image:url(/static/images/img_bg_3.jpg);">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<span>Вас ждут</span>
-					<h2>На нашей свадьбе</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="display-t">
-					<div class="display-tc">
-						<div class="col-md-10 col-md-offset-1">
-							<div class="col-md-6 col-sm-6 text-center">
-								<div class="event-wrap animate-box">
-									<h3>Цветочная подписка</h3>
-									<div class="event-col">
-										<i class="icon-clock"></i>
-										<span>17:00</span>
-										<span>18:00</span>
-									</div>
-									<div class="event-col">
-										<i class="icon-calendar"></i>
-										<span>{{ date }}</span>
-										<span>{{ week_day }}</span>
-									</div>
-									<p>Сразу после свадьбы мы улетаем в свадебное путешествие, поэтому мы не успеем насладиться красотой подаренных цветов.
-										Чтобы праздничное настроение длилось дольше, мы предлагаем оформить цветочную подписку в честь свадьбы!</p>
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-6 text-center">
-								<div class="event-wrap animate-box">
-									<h3>Свадебный ужин</h3>
-									<div class="event-col">
-										<i class="icon-clock"></i>
-										<span>18:00</span>
-										<span>00:00</span>
-									</div>
-									<div class="event-col">
-										<i class="icon-calendar"></i>
-										<span>{{ date }}</span>
-										<span>{{ week_day }}</span>
-									</div>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<div id="fh5co-services" class="fh5co-section-gray">
 		<div class="container">
 
@@ -388,33 +347,116 @@
 		</div>
 	</div>
 
+	<div id="fh5co-event" class="fh5co-bg" style="background-image:url(/static/images/img_bg_3.jpg);">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+					<span>Вас ждут</span>
+					<h2>На нашей свадьбе</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="display-t">
+					<div class="display-tc">
+						<div class="col-md-10 col-md-offset-1">
+							<div class="col-md-6 col-sm-6 text-center">
+								<div class="event-wrap animate-box">
+									<h3>Цветочная подписка</h3>
+									<div class="event-col">
+										<img src="{{ url_for('static', filename='images/qr-flower.gif') }}" alt="user">
+									</div>
+									<div class="event-col">
+										<p>Приобрести подписку<br>Flowers studio</p>
+										<p></p>
+										<p><a href="#" class="btn btn-default btn-sm">Перейти на сайт</a></p>
+									</div>
+									<p>Сразу после свадьбы мы улетаем в свадебное путешествие, поэтому мы не успеем насладиться красотой подаренных цветов.
+										Чтобы праздничное настроение длилось дольше, мы предлагаем оформить цветочную подписку в честь свадьбы!</p>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 text-center">
+								<div class="event-wrap animate-box">
+									<h3>Telegram-канал</h3>
+									<div class="event-col">
+										<img src="{{ url_for('static', filename='images/qr-telega.gif') }}" alt="user">
+									</div>
+									<div class="event-col">
+										<p>Подписаться на наш<br>Telegram-канал</p>
+										<p></p>
+										<p><a href="#" class="btn btn-default btn-sm">Перейти в Telegram</a></p>
+									</div>
+									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-testimonial">
+		<div class="container">
+			<div class="row">
+				<div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+						<span>Best Wishes</span>
+						<h2>Пожелания от близких</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 animate-box">
+						<div class="wrap-testimony">
+							<div class="owl-carousel-fullwidth">
+								{% for item in family%}
+								<div class="item">
+									<div class="testimony-slide active text-center">
+										<figure>
+											<img src="{{ url_for('static', filename=item[4]) }}" alt="user">
+										</figure>
+										<span>{{ item[0] }}, {{ item[1] }} <a href="{{ item[3] }}" class="twitter">{{ item[2] }}</a></span>
+										<blockquote>
+											<p>"{{ item[5] }}"</p>
+										</blockquote>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 	<div id="fh5co-started" class="fh5co-bg" style="background-image:url(/static/images/img_bg_4.jpg);">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Ты придёшь?</h2>
-					<p>Мы очень хотим видеть тебя на нашей свадьбе. </p>
+					<h2>Вы придёте?</h2>
+					<p>Мы очень хотим видеть Вас на нашей свадьбе. </p>
 				</div>
 			</div>
 			<div class="row animate-box">
 				<div class="col-md-10 col-md-offset-1">
-					<form class="form-inline">
+					<form action="" method="post">
 						<div class="col-md-4 col-sm-4">
-							<div class="form-group">
+							<div class="forms-group">
 								<label for="name" class="sr-only">Имя Фамилия</label>
-								<input type="name" class="form-control" id="name" placeholder="Name">
+								<input type="text" class="forms-control" name="name" placeholder="Name">
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4">
-							<div class="form-group">
+							<div class="forms-group">
 								<label for="email" class="sr-only">Email</label>
-								<input type="email" class="form-control" id="email" placeholder="Email">
+								<input type="text" class="forms-control" name="email" placeholder="Email">
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block">Я приду!</button>
+							<input type="submit" class="btn" value="Я приду!">
 						</div>
 					</form>
 				</div>
@@ -446,41 +488,6 @@
 	</footer>
 	</div>
 
-	<div id="fh5co-started" class="fh5co-bg" style="background-image:url(/static/images/img_bg_4.jpg);">
-		<div class="overlay"></div>
-		<div class="container">
-
-			<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
-				<span class="icon">
-					<i class="fas fa-microphone-alt"></i>
-				</span>
-				<div class="feature-copy">
-					<h3>Мероприятие организовано</h3>
-					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-				</div>
-			</div>
-
-			<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
-				<span class="icon">
-					<i class="icon-image"></i>
-				</span>
-				<div class="feature-copy">
-					<h3>Фотограф</h3>
-					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-				</div>
-			</div>
-
-			<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
-				<span class="icon">
-					<i class="icon-video"></i>
-				</span>
-				<div class="feature-copy">
-					<h3>Видеограф</h3>
-					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>

@@ -1344,7 +1344,7 @@ form label {
 #fh5co-started .fh5co-heading p {
   color: rgba(255, 255, 255, 0.5);
 }
-#fh5co-started .form-control {
+#fh5co-started .forms-control {
   background: rgba(255, 255, 255, 0.2);
   border: none !important;
   color: #fff;
@@ -1354,21 +1354,21 @@ form label {
   -o-transition: 0.5s;
   transition: 0.5s;
 }
-#fh5co-started .form-control::-webkit-input-placeholder {
+#fh5co-started .forms-control::-webkit-input-placeholder {
   color: #fff;
 }
-#fh5co-started .form-control:-moz-placeholder {
+#fh5co-started .forms-control:-moz-placeholder {
   /* Firefox 18- */
   color: #fff;
 }
-#fh5co-started .form-control::-moz-placeholder {
+#fh5co-started .forms-control::-moz-placeholder {
   /* Firefox 19+ */
   color: #fff;
 }
-#fh5co-started .form-control:-ms-input-placeholder {
+#fh5co-started .forms-control:-ms-input-placeholder {
   color: #fff;
 }
-#fh5co-started .form-control:focus {
+#fh5co-started .forms-control:focus {
   background: rgba(255, 255, 255, 0.3);
 }
 #fh5co-started .btn {
@@ -1382,11 +1382,11 @@ form label {
   padding-left: 50px;
   padding-right: 50px;
 }
-#fh5co-started .form-inline .form-group {
+#fh5co-started .form-inline .forms-group {
   width: 100% !important;
   margin-bottom: 10px;
 }
-#fh5co-started .form-inline .form-group .form-control {
+#fh5co-started .form-inline .forms-group .forms-control {
   width: 100%;
 }
 #fh5co-started .fh5co-heading {
@@ -1804,7 +1804,7 @@ form label {
   opacity: 1;
 }
 
-.form-control {
+.forms-control {
   box-shadow: none;
   background: transparent;
   border: 2px solid rgba(0, 0, 0, 0.1);
@@ -1812,7 +1812,7 @@ form label {
   font-size: 18px;
   font-weight: 300;
 }
-.form-control:active, .form-control:focus {
+.forms-control:active, .forms-control:focus {
   outline: none;
   box-shadow: none;
   border-color: #F14E95;
