@@ -70,3 +70,14 @@ class Users(User):
             return 'Привет!'
 
         return f'{text} {self.name}!'
+
+    def question(self):
+        if self.gender == 'p':
+            return f'{self.name}, вы придёте?'
+        elif self.gender in ['f', 'm']:
+            return f'{self.name}, Вы придёте?'
+        else:
+            return 'Вы придёте?'
+
+    def appeal(self):
+        return self.gender in ['f', 'm']

@@ -9,7 +9,7 @@
 					<h2>{{ user.welcome() }}</h2>
 					<h3>{{ wed.date }}, {{ wed.location }}</h3>
 					<p>Один день в этом году будет для нас особенным и мы хотим провести его в кругу близких и друзей.
-						С большим удовольствием приглашаем вас на знаменательный праздник - нашу свадьбу!</p>
+						С большим удовольствием приглашаем {{ 'Вас' if user.appeal() else 'вас' }} на знаменательный праздник - нашу свадьбу!</p>
 				</div>
 			</div>
 			<div class="couple-wrap animate-box">
@@ -42,7 +42,7 @@
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 					<span>Вас ждут</span>
 					<h2>На нашей свадьбе</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+					<!--p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p-->
 				</div>
 			</div>
 			<div class="row">
@@ -64,63 +64,6 @@
 						{% endfor %}
 			    	</ul>
 				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="fh5co-gallery" class="fh5co-section-gray">
-		<div class="overlay"></div>
-		<div class="container">
-
-			<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
-				<span class="icon">
-					<i class="fas fa-microphone-alt"></i>
-				</span>
-				<div class="feature-copy">
-					<h3>Мероприятие организовано</h3>
-					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-				</div>
-			</div>
-
-			<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
-				<span class="icon">
-					<i class="icon-image"></i>
-				</span>
-				<div class="feature-copy">
-					<h3>Фотограф</h3>
-					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-				</div>
-			</div>
-
-			<div class="feature-left animate-box" data-animate-effect="fadeInLeft">
-				<span class="icon">
-					<i class="icon-video"></i>
-				</span>
-				<div class="feature-copy">
-					<h3>Видеограф</h3>
-					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="fh5co-couple-story">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<span>Wedding Dress code</span>
-					<h2>Наши пожелания по внешнему виду</h2>
-					<p>Мы очень ждем и с удовольствием готовимся к нашему незабываемому дню! Поддержите нас вашими улыбками и объятиями, а также красивыми нарядами в палитре торжества. Чтобы подчеркнуть значимость этого мероприятия, просим остановить выбор на соответствующих случаю вечерних нарядах:
-					<ul>
-						<li>Дамы — no white, no black, no red.</li>
-						<li>Мужчины — вечерний костюм или пиджак и брюки.</li>
-					</ul></p>
-
-					</ul>
-				</div>
-			</div>
-			<div class="row row-bottom-padded-md">
-				<img src="{{ url_for('static', filename='images/pastelle.jpg') }}" alt="groom" class="img-responsive">
 			</div>
 		</div>
 	</div>
@@ -177,6 +120,28 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="fh5co-couple-story">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+					<span>Wedding Dress code</span>
+					<h2>Наши пожелания по внешнему виду</h2>
+					<p>Мы очень ждем и с удовольствием готовимся к нашему незабываемому дню! Поддержите нас вашими улыбками и объятиями, а также красивыми нарядами в палитре торжества. Чтобы подчеркнуть значимость этого мероприятия, просим остановить выбор на соответствующих случаю вечерних нарядах:
+					<ul>
+						<li>Дамы — no white, no black, no red.</li>
+						<li>Мужчины — вечерний костюм или пиджак и брюки.</li>
+					</ul></p>
+
+					</ul>
+				</div>
+			</div>
+			<div class="row row-bottom-padded-md">
+				<img src="{{ url_for('static', filename='images/pastelle.jpg') }}" alt="groom" class="img-responsive">
+			</div>
+		</div>
+	</div>
+
 
 	<div id="fh5co-services" class="fh5co-section-gray">
 		<div class="container">
@@ -311,8 +276,8 @@
 			{% if not to_go %}
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Вы придёте?</h2>
-					<p>Мы очень хотим видеть Вас на нашей свадьбе. </p>
+					<h2>{{ user.question() }}</h2>
+					<p>Мы были бы рады видеть {{ 'Вас' if user.appeal() else 'вас' }} на нашей свадьбе! </p>
 				</div>
 			</div>
 			<div class="row animate-box">
@@ -331,7 +296,7 @@
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4">
-							<input type="submit" class="btn" value="Я приду!">
+							<input type="submit" class="btn" value="{{ 'Я приду' if user.appeal() else 'Мы придём' }}!">
 						</div>
 					</form>
 				</div>
@@ -340,7 +305,7 @@
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 					<h2>Ура!</h2>
-					<p>Мы будем рады видеть Вас на нашей свадьбе. </p>
+					<p>Мы будем рады видеть {{ 'Вас' if user.appeal() else 'вас' }} на нашей свадьбе! </p>
 				</div>
 			</div>
 			{% endif %}
