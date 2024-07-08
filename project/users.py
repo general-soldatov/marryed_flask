@@ -16,7 +16,7 @@ class User:
         with open(self.path, 'r', encoding='utf-8') as text:
             flag = False
             for item in text:
-                txt = item.strip().split(sep=', ')
+                txt = item.strip().split(sep='/ ')
                 self.waiting += int(txt[2])
                 if txt[1] == self.ids:
                     self.gender = txt[0]
