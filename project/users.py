@@ -1,11 +1,5 @@
 from os import getcwd
 
-class Users:
-    def __init__(self):
-        self.go_to = 10
-        self.waiting = 50
-
-
 class User:
     def __init__(self, ids, path, togo_base):
         self.path = getcwd() + path
@@ -13,8 +7,8 @@ class User:
         self.ids = ids
         self.gender = 'm'
         self.name = ''
-        self.waiting = 0
         self.guest = 0
+        self.waiting = 0
 
         self.to_go = self.base()
 
@@ -34,21 +28,45 @@ class User:
     def go_add(self, *args):
         line = [self.ids, self.guest]
         line.extend(args)
-        with open(self.togo_base, 'a') as file:
+        line.append(self.name)
+        with open(self.togo_base, 'a', encoding='utf-8') as file:
             file.write(', '.join(line) + '\n')
 
     def go(self):
-        with open(self.togo_base, 'r') as text:
+        with open(self.togo_base, 'r', encoding='utf-8') as text:
             for item in text:
                 tst = item.strip().split(sep=', ')
                 if self.ids == tst[0]:
                     return True
-
         return False
 
     def come_event(self):
-        self.waiting = 0
-        with open(self.togo_base, 'r') as text:
+        gos = 0
+        with open(self.togo_base, 'r', encoding='utf-8') as text:
             for item in text:
                 tst = item.strip().split(sep=', ')
-                self.waiting += tst[1]
+                gos += tst[1]
+
+
+class Users(User):
+
+    def go_event(self):
+        gos = 0
+        with open(self.togo_base, 'r', encoding='utf-8') as text:
+            for item in text:
+                tst = item.strip().split(sep=', ')
+                gos += int(tst[1])
+
+            return gos
+
+    def welcome(self):
+        if self.gender == 'm':
+            text = 'Дорогой'
+        elif self.gender == 'f':
+            text = 'Дорогая'
+        elif self.gender == 'p':
+            text = 'Дорогие'
+        else:
+            return 'Привет!'
+
+        return f'{text} {self.name}!'
