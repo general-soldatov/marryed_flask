@@ -1,7 +1,8 @@
 from random import randint, choice
 from string import ascii_lowercase, digits
+from os import getcwd
 
-mypath = 'C:/Users/Юрий Солдатов/PycharmProjects/married_flask/marryed_flask/project/guests.txt'
+mypath = '/static/base/guests.txt'
 
 
 def codeSafe(paths):
@@ -19,13 +20,16 @@ def codeSafe(paths):
             text.write(item + '\n')
 
 def codeAdress(path):
+    mypath = '/static/base/adress.txt'
     codes = []
-    with open(path, 'r', encoding='utf-8') as text:
+    with open(getcwd() + path, 'r', encoding='utf-8') as text:
         for item in text:
-            txt = item.strip().split(sep=', ')[1]
-            codes.append(txt)
+            txt = item.strip().split(sep='/ ')
+            codes.append(f'{txt[3]} | https://юра-и-эля.рф/{txt[1]}\n')
 
-        print(codes)
+    with open(getcwd() + mypath, 'w', encoding='utf-8') as text:
+        for item in codes:
+            text.writelines(item)
 
 # codeSafe(mypath)
 codeAdress(mypath)

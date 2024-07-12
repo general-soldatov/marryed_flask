@@ -3,14 +3,14 @@ from flask import render_template, request, redirect, url_for
 from project.events import NewlyWeds, Wedding
 from project.users import Users, User
 
-app = Flask(__name__)
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+application = Flask(__name__)
+application.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 path = '/static/base/guests.txt'
 togo_base = '/static/base/togo.txt'
 
-@app.route('/index')
-@app.route('/')
+@application.route('/index')
+@application.route('/')
 def index():
     global path, togo_base
     client = False
@@ -30,7 +30,7 @@ def index():
                            client=client, user=users,
                            newl=NewlyWeds(), wed=Wedding())
 
-@app.route('/<user>', methods=['get', 'post'])
+@application.route('/<user>', methods=['get', 'post'])
 def users_page(user):
     global path, togo_base
     user_source = User(user, path, togo_base)
@@ -53,4 +53,4 @@ def users_page(user):
                            newl=NewlyWeds(), wed=Wedding())
 
 if __name__ == '__main__':
-    app.run()
+    application.run()
